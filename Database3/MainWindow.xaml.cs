@@ -21,15 +21,15 @@ namespace Database
     /// </summary>
     public partial class MainWindow : Window
     {
+        OleDbConnection cn;
         public MainWindow()
         {
             InitializeComponent();
-            cn = new OleDbConnection(Provider = Microsoft.ACE.OLEDB.12.0; Data Source = "|DataDirectory|\Actual Database.accdb");
+            cn = new OleDbConnection(cn.ConnectionString);
         }
 
         private void See_Assets_Click(object sender, RoutedEventArgs e)
         {
-            OleDbConnection cn;
             string query = "select * from Assets";
             OleDbCommand cmd = new OleDbCommand(query, cn);
             cn.Open();
@@ -39,6 +39,7 @@ namespace Database
             {
                 data += read[0].ToString() + "\n";
             }
+            MessageBox.Show(data);
         }
     }
 }
