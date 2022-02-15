@@ -25,7 +25,7 @@ namespace Database
         public MainWindow()
         {
             InitializeComponent();
-            cn = new OleDbConnection(cn.ConnectionString);
+            cn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|Actual Database.accdb");
         }
 
         private void See_Assets_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,8 @@ namespace Database
             {
                 data += read[0].ToString() + "\n";
             }
-            MessageBox.Show(data);
+            this.Asset_Table.Text = data;
+            cn.Close();
         }
     }
 }
