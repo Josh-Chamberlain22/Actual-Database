@@ -13,7 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.OleDb;
-
+//Name: Joshua Chamberlain
+//Date: 02/14/2022
+//Description: This program connects to a database and displays the data in the textbox using a button.
 namespace Database
 {
     /// <summary>
@@ -29,7 +31,7 @@ namespace Database
             cn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|Actual Database.accdb");
             cn1 = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|Actual Database.accdb");
         }
-
+        //Allows the button to display the text from the Assets table.
         private void See_Assets_Click(object sender, RoutedEventArgs e)
         {
             string query = "select * from Assets";
@@ -49,7 +51,7 @@ namespace Database
             this.Asset_Table.Text = data;
             cn.Close();
         }
-
+        // Allows the Button to display the text from the Employees table.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string query1 = "select * from Employees";
@@ -67,6 +69,7 @@ namespace Database
                 Edata += read1[2].ToString() + "\n";
             }
             this.Employee_Table.Text = Edata;
+            cn1.Close();
         }
     }
 }
