@@ -22,10 +22,12 @@ namespace Database
     public partial class MainWindow : Window
     {
         OleDbConnection cn;
+        OleDbConnection cn1;
         public MainWindow()
         {
             InitializeComponent();
             cn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|Actual Database.accdb");
+            cn1 = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|Actual Database.accdb");
         }
 
         private void See_Assets_Click(object sender, RoutedEventArgs e)
@@ -37,10 +39,34 @@ namespace Database
             string data = "";
             while (read.Read())
             {
+                data += "Employee ID" + "\n";
                 data += read[0].ToString() + "\n";
+                data += "Asset ID" + "\n";
+                data += read[1].ToString() + "\n";
+                data += "Description" + "\n";
+                data += read[2].ToString() + "\n";
             }
             this.Asset_Table.Text = data;
             cn.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string query1 = "select * from Employees";
+            OleDbCommand cmd1 = new OleDbCommand(query1, cn1);
+            cn1.Open();
+            OleDbDataReader read1 = cmd1.ExecuteReader();
+            string Edata = "";
+            while(read1.Read())
+            {
+                Edata += "Employee ID" + "\n";
+                Edata += read1[0].ToString() + "\n";
+                Edata += "First Name" + "\n";
+                Edata += read1[1].ToString() + "\n";
+                Edata += "Last Name: " + "\n";
+                Edata += read1[2].ToString() + "\n";
+            }
+            this.Employee_Table.Text = Edata;
         }
     }
 }

@@ -9,6 +9,8 @@
     <Grid>
         <Button x:Name ="See_Assets" Content = "See Assets" HorizontalAlignment="Left" Margin="35,43,0,0" VerticalAlignment="Top" Width="75" Click="See_Assets_Click" RenderTransformOrigin="0.489,0.523"/>
         <TextBox x:Name ="Asset_Table" HorizontalAlignment="Left" Height="254" Margin="35,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="409"/>
+        <Button Content="See Employees" HorizontalAlignment="Left" Margin="490,43,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click"/>
+        <TextBox x:Name ="Employee_Table" HorizontalAlignment="Left" Height="254" Margin="490,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="247"/>
 
     </Grid>
 </Window>
